@@ -9,7 +9,7 @@ import de.hamstersimulator.objectsfirst.external.model.Hamster;
  * A HamsterController knows some behavioural patterns for hamsters and makes
  * the controlled hamsters act according to those patterns.
  *
- * @author (Your name)
+ * @author Schweikert
  *
  */
 public class HamsterController {
@@ -54,18 +54,30 @@ public class HamsterController {
 		}
 		controlledHamster.write(String.format("I had %d grains in my mouth. I put all of them on my Tile!", counter));
 	}
-
-	// TODO replace this comment with JavaDoc, including Pre and Post Conditions.
-	void helper0() {
+/**
+ * läuft einen Halbkreis
+ * 
+ *(@requires: er läuft gegen keine Wand)
+ @ensures er läuft tatsächlich einen Halbkreis
+ "@requires ist nicht implamentiert" 
+ */
+	void doHalfCircle() {
 		controlledHamster.write("Executing helper0:");
 		controlledHamster.turnLeft();
 		controlledHamster.move();
 		controlledHamster.turnLeft();
 		controlledHamster.write("I ran a half circle!");
 	}
+/**
+ * Habt alle Gains auf und läuft eins nach vorne
+ * @requires Vor ihm ist keine Wand
+ * @ensures er macht das was er soll
+ * 
+ * "Fehler": er gibt letzen Text aus auch wehn while nicht erfüllt
 
-	// TODO replace this comment with JavaDoc, including Pre and Post Conditions.
-	void helper1() {
+ * 
+ */
+	void pickUpGainsBehinde() {
 		controlledHamster.write("Executing helper1:");
 		while (controlledHamster.frontIsClear()) {
 			pickAllGrains();
@@ -74,8 +86,12 @@ public class HamsterController {
 		controlledHamster.write("I picked all grains, on the tile behind me!");
 	}
 
-	// TODO replace this comment with JavaDoc, including Pre and Post Conditions.
-	void helper2(Integer turns) {
+	/**
+	 * Er dreht sich eine anzugebdende Anzahl offt nach links
+	 * @ensures er führt den Befehl richtig aus
+	 * @param turns gibt an wieoft er sich nach links drehen soll
+	 */
+	void turnLeftNTimes(Integer turns) {
 		controlledHamster.write("Executing helper2:");
 		for (Integer i = 0; i < turns; i++) {
 			controlledHamster.turnLeft();
@@ -83,8 +99,13 @@ public class HamsterController {
 		controlledHamster.write(String.format("I turned %d times!", turns));
 	}
 
-	// TODO replace this comment with JavaDoc, including Pre and Post Conditions.
-	void helper3(Integer steps) {
+	/**
+	 * Er läuf anzugebende Anzahl Vorwehrts
+	 * @requires, solang Vor ihm nichts ist
+	 * dann gibt er aus, wieviele der Schritte er gemacht hat
+	 * @param steps
+	 */
+	void moveNTimes(Integer steps) {
 		controlledHamster.write("Executing helper3:");
 		Integer counter = 0;
 		for (; counter < steps && controlledHamster.frontIsClear(); counter++) {
