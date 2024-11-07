@@ -6,7 +6,7 @@ import java.io.PrintStream;
 /**
  * Please describe this class here.
  *
- * @author (your name)
+ * @author Schweikert
  * @version (a version number or a date)
  */
 public final class ExerciseHamsterGame extends InternalExerciseHamsterGame {
@@ -18,7 +18,11 @@ public final class ExerciseHamsterGame extends InternalExerciseHamsterGame {
 	@Override
 	protected void hamsterRun() {
 		final Territory territory = game.getTerritory();
-		// TODO: Implement me!
+		getTerritorySize();
+		//getNumberOfGrainsAt(Location );
+		hamster.write(getTerritorySize());
+		hamster.write();
+		hamster.write();
 
 	}
 }

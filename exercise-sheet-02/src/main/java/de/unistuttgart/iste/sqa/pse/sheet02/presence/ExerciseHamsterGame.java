@@ -6,15 +6,14 @@ import de.hamstersimulator.objectsfirst.external.model.Hamster;
  * A simple HamsterGame where paule can walk a path of grains
  */
 public class ExerciseHamsterGame extends InternalExerciseHamsterGame {
-	private Hamster hamster;
 	/**
 	 * Make Paule turn right, e.g., if Paule looks to the north, he should look to
 	 * the east after this operation got executed.
 	 */
 	public void turnRight() {
-		hamster.turnLeft();
-		hamster.turnLeft();
-		hamster.turnLeft();
+		paule.turnLeft();
+		paule.turnLeft();
+		paule.turnLeft();
 	}
 
 	public Hamster getHamster() {
@@ -26,26 +25,24 @@ public class ExerciseHamsterGame extends InternalExerciseHamsterGame {
 	 * Paule läuft bis zur nächsten wand, habt dann 5 Ganins auf und legt alle an die selbe stelle und Sagt, das er Paule heißt
 	 */
 	void hamsterRun() {
-		if (hamster.frontIsClear()) 
+		while(paule.frontIsClear())
 		{
-			hamster.move();
+			paule.move();
 		}
-		//hamster.turnRight();
-		hamster.turnLeft();
-		hamster.turnLeft();
-		hamster.turnLeft();
-		hamster.move();
-		//hamster.turnRight();
-		hamster.turnLeft();
-		hamster.turnLeft();
-		hamster.turnLeft();
+		paule.turnLeft();
+		paule.turnLeft();
+		paule.turnLeft();
+		paule.move();
+		paule.turnLeft();
+		paule.turnLeft();
+		paule.turnLeft();
 		for (int i = 0; i < 5; i++)
 		{
-			hamster.move();
-			hamster.pickGrain();
+			paule.move();
+			paule.pickGrain();
 		}
 
-		hamster.write("My name is Paule!");
+		paule.write("My name is Paule!");
 		
 	}
 }
