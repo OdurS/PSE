@@ -1,7 +1,8 @@
 package de.unistuttgart.iste.sqa.pse.sheet03.presence;
 
-import de.hamstersimulator.objectsfirst.external.model.Territory;
 import java.io.PrintStream;
+
+import de.hamstersimulator.objectsfirst.external.model.Territory;
 
 /**
  * Please describe this class here.
@@ -18,10 +19,14 @@ public final class ExerciseHamsterGame extends InternalExerciseHamsterGame {
 	@Override
 	protected void hamsterRun() {
 		final Territory territory = game.getTerritory();
-		string a=territory.etTerritorySize();
-		hamster.write(a);
-		hamster.write(territory.getTotalGrainCount());
-		hamster.write(territory.getTotalHamsterCount());
+		//String a =Size.toString(territory.getTerritorySize());
+		//String b= Integer.toString(territory.getTotalGrainCount());
+		//String c= Integer.toString(territory.getTotalHamsterCount());
+		
+		//paule.write("Größe des Territory: " + a);
+		//paule.write("Anzahl an Körnern: " + b);
+		//paule.write("Anzahl an Hamstern: " + c);
+		//paule.write(c);
 
 	}
 }
