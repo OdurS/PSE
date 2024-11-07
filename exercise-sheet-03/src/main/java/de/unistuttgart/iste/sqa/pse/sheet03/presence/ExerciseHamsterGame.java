@@ -19,7 +19,7 @@ public final class ExerciseHamsterGame extends InternalExerciseHamsterGame {
 	protected void hamsterRun() {
 		final Territory territory = game.getTerritory();
 		getTerritorySize();
-		//getNumberOfGrainsAt(Location );
+		getNumberOfGrainsAt(Location );
 		hamster.write(getTerritorySize());
 		hamster.write();
 		hamster.write();
