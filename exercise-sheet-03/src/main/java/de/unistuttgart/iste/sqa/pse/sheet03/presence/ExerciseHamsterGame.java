@@ -18,12 +18,10 @@ public final class ExerciseHamsterGame extends InternalExerciseHamsterGame {
 	@Override
 	protected void hamsterRun() {
 		final Territory territory = game.getTerritory();
-		getTerritorySize();
-		getNumberOfGrainsAt(Location );
-		getNumberOf
-		hamster.write(getTerritorySize());
-		hamster.write();
-		hamster.write();
+		string a=territory.etTerritorySize();
+		hamster.write(a);
+		hamster.write(territory.getTotalGrainCount());
+		hamster.write(territory.getTotalHamsterCount());
 
 	}
 }
