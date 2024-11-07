@@ -10,7 +10,7 @@ public class TwoHamstersHamsterGame extends InternalTwoHamstersHamsterGame {
 
 	@Override
 	/**
-	 * Paule und Tiffeny laufen sammeln alle Körner und treffen sich in der MItte und legen alle Körner ab
+	 * Paule and Tiffeny run to collect all the grains and meet in the middle and put all the grains down
 	 */
 	void hamsterRun() {
 		tiffany.move(); 
@@ -23,7 +23,7 @@ public class TwoHamstersHamsterGame extends InternalTwoHamstersHamsterGame {
 		controllerTiffany.pickAllGrains();
 		controllerTiffany.turnLeftNTimes(3);
 		controllerTiffany.moveNTimes(3);
-		//Tiffeny ist mit allen Körnern am Treffpunkt
+		//Tiffeny is at the meeting point with all the grains
 		paule.move();
 		controllerPaule.pickUpGainsBehinde();
 		controllerPaule.pickAllGrains();
@@ -38,7 +38,7 @@ public class TwoHamstersHamsterGame extends InternalTwoHamstersHamsterGame {
 		controllerPaule.pickAllGrains();
 		controllerPaule.turnLeftNTimes(1);
 		controllerPaule.moveNTimes(3);
-		//Paule ist mit allen Körnern am Treffpunkt
+		//Paule is at the meeting point with all the grains
 		controllerTiffany.putAllGrains();
 		controllerPaule.putAllGrains();
 

@@ -55,11 +55,11 @@ public class HamsterController {
 		controlledHamster.write(String.format("I had %d grains in my mouth. I put all of them on my Tile!", counter));
 	}
 /**
- * läuft einen Halbkreis
+ * runs a semicircle
  * 
- *(@requires: er läuft gegen keine Wand)
- @ensures er läuft tatsächlich einen Halbkreis
- "@requires ist nicht implamentiert" 
+ *(@requires: he doesn't run into any walls)
+ @ensures he actually runs in a semicircle
+ "@requires is not implemented" 
  */
 	void doHalfCircle() {
 		controlledHamster.write("Executing helper0:");
@@ -69,11 +69,11 @@ public class HamsterController {
 		controlledHamster.write("I ran a half circle!");
 	}
 /**
- * Habt alle Gains auf und läuft eins nach vorne
- * @requires Vor ihm ist keine Wand
- * @ensures er macht das was er soll
+ * Have all the gains on and run one step forward
+ * @requires There is no wall in front of him
+ * @ensures he does what he's supposed to do
  * 
- * "Fehler": er gibt letzen Text aus auch wehn while nicht erfüllt
+ * "Error": it outputs the last text even if while is not fulfilled
 
  * 
  */
@@ -87,9 +87,9 @@ public class HamsterController {
 	}
 
 	/**
-	 * Er dreht sich eine anzugebdende Anzahl offt nach links
-	 * @ensures er führt den Befehl richtig aus
-	 * @param turns gibt an wieoft er sich nach links drehen soll
+	 * It turns to the left a specified number of times
+	 * @ensures it executes the command correctly
+	 * @param turns indicates how often it should turn to the left
 	 */
 	void turnLeftNTimes(Integer turns) {
 		controlledHamster.write("Executing helper2:");
@@ -100,9 +100,9 @@ public class HamsterController {
 	}
 
 	/**
-	 * Er läuf anzugebende Anzahl Vorwehrts
-	 * @requires, solang Vor ihm nichts ist
-	 * dann gibt er aus, wieviele der Schritte er gemacht hat
+	 * He runs the number of advances to be specified
+	 * @requires, as long as there is nothing before him
+	 * then it reports how many of the steps it has taken
 	 * @param steps
 	 */
 	void moveNTimes(Integer steps) {
