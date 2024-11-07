@@ -59,7 +59,7 @@ public class HamsterController {
  * 
  *(@requires: he doesn't run into any walls)
  @ensures he actually runs in a semicircle
- "@requires is not implemented" 
+ "@requires is not implemented"   =>Also eigentlich keine Vorbedingung
  */
 	void doHalfCircle() {
 		controlledHamster.write("Executing helper0:");
@@ -69,7 +69,7 @@ public class HamsterController {
 		controlledHamster.write("I ran a half circle!");
 	}
 /**
- * Have all the gains on and run one step forward
+ * Picks up all the grains and move one step forward, until @requires is false
  * @requires There is no wall in front of him
  * @ensures he does what he's supposed to do
  * 
@@ -100,10 +100,11 @@ public class HamsterController {
 	}
 
 	/**
-	 * He runs the number of advances to be specified
+	 * He moves stpes times, and add steps to counter
 	 * @requires, as long as there is nothing before him
 	 * then it reports how many of the steps it has taken
-	 * @param steps
+	 * @ensures has moved number of steps or moved to the next Wall and counted number of teken steps, write them
+	 * @param steps number of taken steps
 	 */
 	void moveNTimes(Integer steps) {
 		controlledHamster.write("Executing helper3:");
