@@ -20,6 +20,7 @@ public final class ExerciseHamsterGame extends InternalExerciseHamsterGame {
 		final Territory territory = game.getTerritory();
 		getTerritorySize();
 		getNumberOfGrainsAt(Location );
+		getNumberOf
 		hamster.write(getTerritorySize());
 		hamster.write();
 		hamster.write();
