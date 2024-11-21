@@ -1,9 +1,9 @@
 package de.unistuttgart.iste.sqa.pse.sheet05.homework;
-
 /**
  * This class contains the {@code main} method with which the game can be
  * started.
  */
+										
 public final class HamsterPartyGameApp {
 
 	/**
