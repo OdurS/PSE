@@ -50,9 +50,9 @@ public abstract class BaseControlFlowHamsterGame extends SimpleHamsterGame {
  * @encures Grains count at location of paule -1 of bevore
 */
 	protected void pickGrainIfAvailable() {
-		if(paule.grainAvalible())
+		if(paule.grainAvailable())
 		{
-			paule.pickUpGrain();
+			paule.pickGrain();
 		}
 	}
 /**
