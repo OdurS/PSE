@@ -62,8 +62,8 @@ public abstract class BaseControlFlowHamsterGame extends SimpleHamsterGame {
  * @decreasing Number of Grains Availible != 0, i--
  */
 	protected void pickAllGrains() {
-		while (paule.grainAvalible()) {
-			paule.pickUpGrain();
+		while (paule.grainAvailable()) {
+			paule.pickGrain();
 		}
 	}
 /**
@@ -75,7 +75,7 @@ public abstract class BaseControlFlowHamsterGame extends SimpleHamsterGame {
  * @decreasing times -i 
  *  */
 	protected void multiMove(Integer times) {
-			for(i = 1; i <= times; i++)
+			for(int i = 1; i <= times; i++)
 			{
 				paule.move();
 			}
@@ -86,9 +86,9 @@ public abstract class BaseControlFlowHamsterGame extends SimpleHamsterGame {
 	 * @encures has pickt up a grain or moved
 	 */
 	protected void pickGrainOrMove() {
-		if(paule.grainAvalible())
+		if(paule.grainAvailable())
 		{
-			paule.pickUpGrain();
+			paule.pickGrain();
 		}
 		else
 		{
@@ -106,11 +106,11 @@ public abstract class BaseControlFlowHamsterGame extends SimpleHamsterGame {
 	protected void pickAllGrainsOnNonEmptyTile() {
 		do 
 		{
-			paule.pickUpGrain();	
+			paule.pickGrain();	
 		}
-		while (paule.grainAvalible());
+		while (paule.grainAvailable());
 		{
-			paule.pickUPGrain();
+			paule.pickGrain();
 		}
 	}
 
