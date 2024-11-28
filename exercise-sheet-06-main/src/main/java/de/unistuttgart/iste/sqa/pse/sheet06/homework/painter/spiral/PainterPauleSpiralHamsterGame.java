@@ -56,7 +56,7 @@ public class PainterPauleSpiralHamsterGame extends SimpleHamsterGame {
 
 
 	/**
-	 * TODO insert JavaDoc here.
+	 * TODO insert JavaDoc here.fehlt noch
 	 */
 	private void spiral() {
 			paintFirstLineAndGetLength();
