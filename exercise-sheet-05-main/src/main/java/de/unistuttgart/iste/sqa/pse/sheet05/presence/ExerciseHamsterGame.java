@@ -6,7 +6,7 @@ import de.hamstersimulator.objectsfirst.external.simple.game.SimpleHamsterGame;
 /**
  * Please describe this class here.
  *
- * @author (your name)
+ * @author Schweikert
  * @version (a version number or a date)
  */
 public final class ExerciseHamsterGame extends SimpleHamsterGame {
