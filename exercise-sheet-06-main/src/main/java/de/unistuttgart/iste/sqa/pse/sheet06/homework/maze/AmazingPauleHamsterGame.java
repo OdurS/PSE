@@ -29,7 +29,7 @@ public class AmazingPauleHamsterGame extends SimpleHamsterGame {
 		passTheMaze();
 	}
 	/**
-	 * Paule dreht sich nach rechts 
+	 * Paule turns to the right 
 	 */
 	private void turnRight() {
 		paule.turnLeft();
@@ -37,8 +37,8 @@ public class AmazingPauleHamsterGame extends SimpleHamsterGame {
 		paule.turnLeft();
 	}
 	/**
-	 * Wenn geprüft wird ob links frei ist, wenn links frei guckt er weiterhin in die Richtung, sonst dreht er sich wieder zurück
-	 * @return Ob links frei ist
+	 * When checking whether the left is free, if the left is free it continues to look in that direction, otherwise it turns back again
+	 * @return Whether the left is free
 	 */
 	private boolean isLeftFree() {
 		paule.turnLeft();
@@ -51,7 +51,7 @@ public class AmazingPauleHamsterGame extends SimpleHamsterGame {
 		}
 	}
 	/**
-	 * Paule läuft, bis vor ihm eine Wand oder zur nächsten Stelle wo Links von ihm frei ist und führt dann isLeftFree aus, läuft dann weiter
+	 * Paule runs until there is a wall in front of him or to the next place where his left is free and then executes isLeftFree and then continues running
 	 * @ensures !paule.frontIsClear
 	 * @invariante times paule has moved
 	 */
@@ -62,9 +62,9 @@ public class AmazingPauleHamsterGame extends SimpleHamsterGame {
 	}
 	private  int turnCounter = 0;
 	/**
-	 * Findet den nächst möglichen weg der nicht direkt zurück ist, links präverenz
-	 * @param turnCounter zählt immer wenn er beim suchen sich nach liks dreht, wenn gleich 2 dreht er sich einmal extra der COunter wird zurückgesetzt, damit paule nicht einfach zurücl läuft
-	 * @ensures Paule guckt in die richtung des nächst möglichen Weges, links von ihm , den nach hinten ausgeschlossen, außer es existiert nur der weg zurück 
+	 * Find the next possible path that is not directly back, left preverence
+	 * @param turnCounterIt always counts when he turns while looking for liks, if there are 2 he turns once extra, the counter is reset so that Paule doesn't just run back
+	 * @ensures Paule looks in the direction of the next possible path to his left, which excludes the one to the rear, unless only the path back exists
 	 */
 	private void findNextWayLeft(){
 		turnCounter = 0;
@@ -79,10 +79,10 @@ public class AmazingPauleHamsterGame extends SimpleHamsterGame {
 	}
 
 /**
- * läuft durch das Labirint bis zum Korn
- * @requires Das Labirint muss möglich sein
- * @requires Es muss ein Korn exestiren
- * @ensures PAule hat ein Korn im Mund
+ * runs through the labirint to the grain
+ * @requires The Labirint must be possible
+ * @requires A grain must exist
+ * @ensures Paule has something in his mouth
  */
 	void passTheMaze() {
 		while (!paule.grainAvailable()) { 
