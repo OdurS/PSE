@@ -30,6 +30,6 @@ public class PainterPauleSpiralHamsterGame extends SimpleHamsterGame {
 	 * TODO insert JavaDoc here.
 	 */
 	private void spiral() {
-		// TODO implement 2 (b) here.
+		
 	}
 }
