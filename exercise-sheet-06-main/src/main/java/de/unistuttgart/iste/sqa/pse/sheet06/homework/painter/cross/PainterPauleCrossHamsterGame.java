@@ -29,6 +29,34 @@ public class PainterPauleCrossHamsterGame extends SimpleHamsterGame {
 		paule.turnLeft();
 		paule.turnLeft();
 	}
+	private void paintLineDirgonalUp (){
+		while(paule.frontIsClear()){
+			paule.putGrain();
+			paule.move();
+			turnRight();
+			if (paule.frontIsClear()) {
+				paule.move();
+				paule.turnLeft();
+			}
+		}
+	}
+	private  void paintLineDirgonalDown(){
+		while (paule.frontIsClear()) { 
+			paule.putGrain();
+			paule.move();
+		
+		paule.turnLeft();
+		if (paule.frontIsClear()) {
+			paule.move();
+			turnRight();
+		}
+		}
+	}
+	private void walkeStraitLine(){
+		while (paule.frontIsClear()) { 
+			paule.move();
+		}
+	}
 	/**
 	 * Hamster legt ein Kreutz aus Körnern in ein belibig großes quadratisches Feld
 	 * @requires Es muss ein Quadratisches Feld sein
@@ -36,32 +64,11 @@ public class PainterPauleCrossHamsterGame extends SimpleHamsterGame {
 	 * @ensures Es éxistier ein Kreuz aus Körnern
 	 */
 	private void cross() {
-		paule.putGrain();
-		while(paule.frontIsClear()){
-			paule.move();
-			paule.putGrain();
-			turnRight();
-			if (paule.frontIsClear()) {
-				paule.move();
-				paule.putGrain();
-				paule.turnLeft();
-			}
-		}
-			paule.turnLeft();
-			while (paule.frontIsClear()) { 
-				paule.move();
-			}
-			paule.turnLeft();
-			while (paule.frontIsClear()) { 
-				paule.move();
-			paule.putGrain();
-			paule.turnLeft();
-			if (paule.frontIsClear()) {
-				paule.move();
-				paule.putGrain();
-				turnRight();
-			}
-			}
+		 paintLineDirgonalUp();
+		 paule.turnLeft();
+		 walkeStraitLine();
+		 paule.turnLeft();
+		paintLineDirgonalDown();
 
 		
 	
