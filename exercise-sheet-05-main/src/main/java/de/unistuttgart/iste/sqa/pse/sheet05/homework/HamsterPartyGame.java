@@ -12,16 +12,16 @@ import de.hamstersimulator.objectsfirst.external.simple.game.SimpleHamsterGame;
  * @version (A date or a version number)
  */
 public class HamsterPartyGame extends SimpleHamsterGame {
-		Hamster adam= new Hamster(game.getTerritory(),new Location(0,0),Direction.EAST,0);
-		Hamster eva= new Hamster(game.getTerritory(),new Location(0,1),Direction.EAST,0);
-		Hamster erik= new Hamster(game.getTerritory(),new Location(4,2),Direction.EAST,0);
-		Hamster lupin= new Hamster(game.getTerritory(),new Location(4,4),Direction.WEST,0);
+	
 	public HamsterPartyGame() {
 		this.loadTerritoryFromResourceFile("/territories/territory-hamsterparty.ter");
 		this.displayInNewGameWindow();
 		game.startGame();
 	}
-
+		Hamster adam= new Hamster(game.getTerritory(),new Location(0,0),Direction.EAST,0);
+		Hamster eva= new Hamster(game.getTerritory(),new Location(0,1),Direction.EAST,0);
+		Hamster erik= new Hamster(game.getTerritory(),new Location(4,2),Direction.EAST,0);
+		Hamster lupin= new Hamster(game.getTerritory(),new Location(4,4),Direction.WEST,0);
 	/**
 	 * Starts the HamsterPartyGame.
 	 *
