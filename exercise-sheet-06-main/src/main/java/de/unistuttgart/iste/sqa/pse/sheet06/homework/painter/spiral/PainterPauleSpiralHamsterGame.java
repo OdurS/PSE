@@ -56,7 +56,10 @@ public class PainterPauleSpiralHamsterGame extends SimpleHamsterGame {
 
 
 	/**
-	 * TODO insert JavaDoc here.fehlt noch
+	 * paints a spiral made of grains
+	 * @requires The terrerory must be square
+	 * @requires default hamster must be created at the bottom left and facing north
+	 * @ensures a spiral of grains exists
 	 */
 	private void spiral() {
 			paintFirstLineAndGetLength();

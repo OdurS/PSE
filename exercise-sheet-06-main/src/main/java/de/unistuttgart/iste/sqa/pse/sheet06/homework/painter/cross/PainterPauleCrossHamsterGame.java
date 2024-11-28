@@ -63,10 +63,12 @@ public class PainterPauleCrossHamsterGame extends SimpleHamsterGame {
 	 */
 	private void cross() {
 		 paintLineDirgonalUp();
+		 paule.putGrain();
 		 paule.turnLeft();
 		 walkeStraitLine();
 		 paule.turnLeft();
 		 paintLineDirgonalDown();
+		 paule.putGrain();
 
 		
 	
