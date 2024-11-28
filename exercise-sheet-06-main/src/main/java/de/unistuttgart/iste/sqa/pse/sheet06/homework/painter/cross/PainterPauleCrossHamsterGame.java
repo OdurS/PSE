@@ -1,19 +1,17 @@
 package de.unistuttgart.iste.sqa.pse.sheet06.homework.painter.cross;
 
+import de.hamstersimulator.objectsfirst.external.model.Hamster;
 import de.hamstersimulator.objectsfirst.external.simple.game.SimpleHamsterGame;
 
 /**
- * Describe the purpose of this class here.
+ *  Hamster legt ein Kreutz aus Körnern in ein belibig großes quadratisches Feld
  *
- * @author (Your name)
+ * @author Schweikert
  * @version (a version number or a date)
  */
 public class PainterPauleCrossHamsterGame extends SimpleHamsterGame {
 
-	/**
-	 * Creates a new PainterPauleHamsterGame.<br>
-	 * Do not modify!
-	 */
+	Hamster paule= new Hamster();
 	public PainterPauleCrossHamsterGame() {
 		this.loadTerritoryFromResourceFile("/territories/PainterPauleTerritory.ter");
 		this.displayInNewGameWindow();
@@ -25,10 +23,47 @@ public class PainterPauleCrossHamsterGame extends SimpleHamsterGame {
 		cross();
 	}
 
+	
+	private void turnRight() {
+		paule.turnLeft();
+		paule.turnLeft();
+		paule.turnLeft();
+	}
 	/**
-	 * TODO insert JavaDoc here.
+	 * Hamster legt ein Kreutz aus Körnern in ein belibig großes quadratisches Feld
+	 * @requires Es muss ein Quadratisches Feld sein
+	 * @requires default Hamster muss unten links erstellt werden und nach Norden schauen
+	 * @ensures Es éxistier ein Kreuz aus Körnern
 	 */
 	private void cross() {
-		// TODO implement 2 (a) here.
-	}
+		paule.putGrain();
+		while(paule.frontIsClear()){
+			paule.move();
+			paule.putGrain();
+			turnRight();
+			if (paule.frontIsClear()) {
+				paule.move();
+				paule.putGrain();
+				paule.turnLeft();
+			}
+		}
+			paule.turnLeft();
+			while (paule.frontIsClear()) { 
+				paule.move();
+			}
+			paule.turnLeft();
+			while (paule.frontIsClear()) { 
+				paule.move();
+			paule.putGrain();
+			paule.turnLeft();
+			if (paule.frontIsClear()) {
+				paule.move();
+				paule.putGrain();
+				turnRight();
+			}
+			}
+
+		
+	
+}
 }
