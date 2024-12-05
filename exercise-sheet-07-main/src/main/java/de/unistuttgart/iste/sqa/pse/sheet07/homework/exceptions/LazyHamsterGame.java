@@ -57,10 +57,10 @@ public class LazyHamsterGame extends SimpleHamsterGame {
 					paule.turnLeft();
 				}
 				tryToMove();
-				if (hasWalked) {
-					
+				while (!hasWalked) { 
+					tryToMove();
 				}
-				
+
 			}
 		}
 	}
