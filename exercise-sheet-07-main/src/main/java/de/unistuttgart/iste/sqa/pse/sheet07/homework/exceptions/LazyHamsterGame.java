@@ -5,7 +5,7 @@ import de.hamstersimulator.objectsfirst.external.simple.game.SimpleHamsterGame;
 /**
  * A SimpleHamsterGame with exceptions
  *
- * @author (your name)
+ * @author Schweikert
  */
 public class LazyHamsterGame extends SimpleHamsterGame {
 
@@ -27,19 +27,61 @@ public class LazyHamsterGame extends SimpleHamsterGame {
 		moveMultipleSteps(5);
 	}
 
-	// TODO add documentation with contracts here
+	/**
+	 * paule moves with a probability of 75%
+	 * @requires paule.front is clear
+	 * @ensures paule has moved or was to Lazy
+	 */
+	public boolean hasWalked;
 	public void tryToMove() {
-		// TODO Implement here.
+	    int a = (int) Math.random()*4;
+		if (a <= 1){
+			hasWalked = false;
+			throw new TooLazyException();
+		}
+		else{
+			paule.move();
+			hasWalked = true;
+		}
 	}
+
 
 	// TODO add documentation with contracts here
 	public void moveMultipleSteps(int numberOfSteps) {
-		// TODO Implement here.
+		for (int i = 0; i < numberOfSteps; i++) {
+			if (isCaged()) {
+				throw new NoWayToGoException();
+			}
+			else{
+				while (!paule.frontIsClear()) { 
+					paule.turnLeft();
+				}
+				tryToMove();
+				if (hasWalked) {
+					
+				}
+				
+			}
+		}
 	}
 
-	// TODO add documentation with contracts here
+	/**
+	 * if paule is Caged true
+	 * @return if paule is Caged
+	 */
 	public boolean isCaged() {
-		// TODO Implement here.
-		return true; // delete this line, if necessary.
+		int wallCounter = 0;
+		for (int i = 0; i < 4; i++) {
+			if (paule.frontIsClear()){
+				wallCounter++;
+			} 
+			paule.turnLeft();
+		}
+		if (wallCounter == 4){
+		return true; 
+		}
+		else {
+			return false;
+		}
 	}
 }
