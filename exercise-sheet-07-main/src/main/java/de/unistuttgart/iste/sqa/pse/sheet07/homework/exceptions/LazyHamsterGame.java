@@ -34,7 +34,7 @@ public class LazyHamsterGame extends SimpleHamsterGame {
 	 */
 	public boolean hasWalked;
 	public void tryToMove() {
-	    int a = (int) Math.random()*4;
+	    int a = (int) (Math.random() * 4);
 		if (a <= 1){
 			hasWalked = false;
 			throw new TooLazyException();
@@ -45,8 +45,15 @@ public class LazyHamsterGame extends SimpleHamsterGame {
 		}
 	}
 
-
-	// TODO add documentation with contracts here
+/**
+ * The operation has a positive integer n as a parameter and allows Paul to walk n steps.
+To run, use the tryToMove operation. If the field in front of Paule is not clear,
+turn to the left. If none of the spaces adjacent to Paule's field are free, a
+NoWayToGoException. If he doesn't make progress because he's too lazy, he should be cheered on
+(Hamsters are cheered on by using their write operation to create a motivating
+Text)
+ * @ensures paule has walked n times
+ */ 
 	public void moveMultipleSteps(int numberOfSteps) {
 		for (int i = 0; i < numberOfSteps; i++) {
 			if (isCaged()) {
@@ -58,6 +65,7 @@ public class LazyHamsterGame extends SimpleHamsterGame {
 				}
 				tryToMove();
 				while (!hasWalked) { 
+					paule.write("Lauf");
 					tryToMove();
 				}
 
