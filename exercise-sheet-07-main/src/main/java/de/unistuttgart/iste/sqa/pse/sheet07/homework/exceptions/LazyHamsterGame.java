@@ -45,6 +45,19 @@ public class LazyHamsterGame extends SimpleHamsterGame {
 		}
 	}
 
+	// Da moveMultipleSteps nur logisch ist wenn das Programm nicht abgebrochen wird, nachdem er TooLazy war hier der selbe befehl ohne Exception
+	public void tryToMoveNoExeption() {
+	    int a = (int) (Math.random() * 4);
+		if (a <= 1){
+			hasWalked = false;
+			paule.write("I was to Lazy");
+		}
+		else{
+			paule.move();
+			hasWalked = true;
+		}
+	}
+
 /**
  * The operation has a positive integer n as a parameter and allows Paul to walk n steps.
 To run, use the tryToMove operation. If the field in front of Paule is not clear,
@@ -63,7 +76,7 @@ Text)
 				while (!paule.frontIsClear()) { 
 					paule.turnLeft();
 				}
-				tryToMove();
+				tryToMoveNoExeption();
 				while (!hasWalked) { 
 					paule.write("Lauf");
 					tryToMove();
@@ -80,7 +93,7 @@ Text)
 	public boolean isCaged() {
 		int wallCounter = 0;
 		for (int i = 0; i < 4; i++) {
-			if (paule.frontIsClear()){
+			if (!paule.frontIsClear()){
 				wallCounter++;
 			} 
 			paule.turnLeft();
