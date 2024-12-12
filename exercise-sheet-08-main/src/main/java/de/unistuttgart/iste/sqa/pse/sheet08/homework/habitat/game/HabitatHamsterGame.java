@@ -5,9 +5,11 @@ import de.hamstersimulator.objectsfirst.datatypes.Location;
 import de.hamstersimulator.objectsfirst.external.model.TerritoryBuilder;
 import de.hamstersimulator.objectsfirst.external.simple.game.SimpleHamsterGame;
 import de.unistuttgart.iste.sqa.pse.sheet08.homework.habitat.house.House;
+import de.unistuttgart.iste.sqa.pse.sheet08.homework.habitat.house.HouseWall;
 
 /**
  * The habitat hamster game.
+ * @author Schweikert
  */
 public final class HabitatHamsterGame extends SimpleHamsterGame {
 
@@ -17,9 +19,22 @@ public final class HabitatHamsterGame extends SimpleHamsterGame {
 		this.loadTerritoryFromResourceFile("/territories/habitatTerritory.ter");
 
 		TerritoryBuilder territoryBuilder = game.getNewTerritoryBuilder();
-
-		// TODO Implement exercise 2 (d) between here...
-
+			this.loadTerritoryFromResourceFile("/territories/habitatTerritory.ter");
+	
+			HouseWall northernWall = new HouseWall(new Location(0, 0), new Location(0, 10)); // Example of a horizontal wall
+			HouseWall easternWall = new HouseWall(new Location(0, 10), new Location(7, 10)); // Example of a vertical wall
+			HouseWall southernWall = new HouseWall(new Location(7, 10), new Location(7, 0)); // Example of a horizontal wall
+			HouseWall westernWall = new HouseWall(new Location(7, 0), new Location(0, 0)); // Example of a vertical wall
+		
+			
+			build(northernWall);
+			house.addWall(easternWall);
+			house.addWall(southernWall);
+			house.addWall(westernWall);
+		
+			// Optionally add doors if needed (example if we want to add doors to certain walls)
+			northernWall.addDoor(new Location(0, 5)); // Example of adding a door to the northern wall
+			southernWall.addDoor(new Location(7, 5)); // Example of adding a door to the southern wall
 		// ...and here. Do NOT put any code after here.
 
 		game.initialize(territoryBuilder);

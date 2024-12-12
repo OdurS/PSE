@@ -94,6 +94,18 @@ public final class HouseBuilder {
 		}
 		return new House(walls);
 	}
+	
+	private void removeWallTile(Location location) {
+		// Hier setzt du den Tile an der angegebenen Location auf "Clear" (oder "Empty")
+		// Dies entfernt die Wand und ermöglicht es, dort einen Eingang zu setzen.
+		setTileAt(location, "Clear"); // Setzt das Gebiet auf "Clear" (frei)
+	}
+	
+	// Diese Methode könnte zum Beispiel genutzt werden, um Wände zu setzen
+	private void placeWallTile(Location location) {
+		setTileAt(location, "Wall"); // Setzt das Gebiet als Wand
+	}
+	
 
 	/**
 	 * Create a single housewall by placing walls on the territory's tiles.
@@ -102,9 +114,43 @@ public final class HouseBuilder {
 	 *
 	 * @param wall the housewall to be put on the territory.
 	 */
-	private void buildWall(final HouseWall wall) {
-		// TODO implement exercise 2 (e) here.
-	}
+		private void buildWall(final HouseWall wall) {
+			// Get the start and end locations of the wall
+			Location start = wall.getStart();
+			Location end = wall.getEnd();
+			
+			// Check if the wall is vertical or horizontal and build accordingly
+			if (wall.isVertical()) {
+				// The wall is vertical, so we iterate through the rows in the same column
+				for (int row = start.getRow(); row <= end.getRow(); row++) {
+					Location currentLocation = Location.from(row, start.getColumn());
+					placeWallTile(currentLocation); // A method to mark the location as a wall
+				}
+				
+				// If the wall has a door, mark it as open space in between the start and end
+				if (wall.getDoor().isPresent()) {
+					Location doorLocation = wall.getDoor().get();
+					removeWallTile(doorLocation); // A method to remove the wall and place a door
+				}
+		
+			} else if (wall.isHorizontal()) {
+				// The wall is horizontal, so we iterate through the columns in the same row
+				for (int column = start.getColumn(); column <= end.getColumn(); column++) {
+					Location currentLocation = Location.from(start.getRow(), column);
+					placeWallTile(currentLocation); // Mark as wall
+				}
+				
+				// If the wall has a door, handle it
+				if (wall.getDoor().isPresent()) {
+					Location doorLocation = wall.getDoor().get();
+					removeWallTile(doorLocation); // Remove wall to place the door
+				}
+			} else {
+				// If the wall is neither vertical nor horizontal, it’s invalid
+				throw new IllegalArgumentException("The wall is neither vertical nor horizontal.");
+			}
+		}
+
 
 	/**
 	 * Check whether the new wall overlaps with any of the already planned walls or with anything that is already placed on the territory.

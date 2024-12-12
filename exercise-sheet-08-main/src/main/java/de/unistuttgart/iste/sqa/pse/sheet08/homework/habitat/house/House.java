@@ -1,13 +1,14 @@
 package de.unistuttgart.iste.sqa.pse.sheet08.homework.habitat.house;
 
 import java.util.Set;
+import java.util.HashSet;
 
 /**
  * A house in the habitat game.
  *
  * A house consists of a least one wall and up to one door per wall.
  *
- * @author (your name)
+ * @author Schweikert
  *
  */
 public final class House {
@@ -27,10 +28,26 @@ public final class House {
 	 *
 	 * @return doors of the house.
 	 */
-	public Set<Door> getDoors() {
-		// TODO implement 2 (g) here
-		return Set.of(); // TODO remove this line if necessary.
-	}
+
+
+
+    private Set<Door> doors; // Set to store all the doors in the house
+
+    public House() {
+        this.doors = new HashSet<>(); // Initialize the set of doors
+    }
+
+    // Method to add a door to the house
+    public void addDoor(Door door) {
+        doors.add(door);
+    }
+
+    // Implementing the getDoors() method
+    public Set<Door> getDoors() {
+        return new HashSet<>(doors); // Return a copy of the set to avoid external modifications
+    }
+
+
 
 	/**
 	 * Creates a new house with the specified walls.

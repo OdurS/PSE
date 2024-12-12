@@ -3,7 +3,6 @@ package de.unistuttgart.iste.sqa.pse.sheet08.homework.habitat.house;
 import java.util.Optional;
 
 import de.hamstersimulator.objectsfirst.datatypes.Location;
-import de.hamstersimulator.objectsfirst.external.model.TerritoryBuilder;
 
 /**
  * A wall in a {@link House}.
@@ -27,31 +26,13 @@ import de.hamstersimulator.objectsfirst.external.model.TerritoryBuilder;
  * housewall has a door, that door must be located in between start and end. In
  * addition, the door must not be at the very start or end of the housewall.
  *
- * @author Schweikert
+ * @author (your name)
  */
 public final class HouseWall {
 	private final Location start;
 	private final Location end;
-	private Integer startRow; 
-	private Integer startCloumn;
-	private Integer endRow; 
-	private Integer endCloumn;
-	private Integer startPosition;
-	private Integer endPosition; 
-	private Integer fixedPosition;
-	private Location Position;
 
 	private Optional<Location> door;
-	private void buildWall(Integer startPosition, Integer endPosition, Integer fixedPosition){
-		for (startPosition; startPosition < endPosition; fixedPosition++) {
-			Location Position = new Location(startPosition, fixedPosition);
-			if (Position.blocksEntrance()) {
-				TerritoryBuilder.wallAt(Location Position);
-			}
-			
-		}
-
-	} 
 
 	/**
 	 * Constructs a new wall, which may or may not have a door.
@@ -64,24 +45,34 @@ public final class HouseWall {
 	 * @param end   location of the wall's last part
 	 */
 	public HouseWall(final Location start, final Location end) {
-		// TODO implement exercise 2 (b) here.
-
+		// Sicherstellen, dass start und end nicht null sind
+		if (start == null || end == null) {
+			throw new IllegalArgumentException("Start and end locations must not be null.");
+		}
+	
+		// Überprüfen, ob start und end in einer Linie liegen
+		if (!areInLine(start, end)) {
+			throw new IllegalArgumentException("Start and end must be in line (either horizontal or vertical).");
+		}
+	
+		// Überprüfen, ob die Startposition tatsächlich näher am Ursprung ist als die Endposition
+		if (!isStartSmallerThanEnd(start, end)) {
+			throw new IllegalArgumentException("Start location must be closer to the origin than the end location.");
+		}
+	
+		// Überprüfen, ob die Wand mindestens zwei Felder lang ist
+		if (start.equals(end)) {
+			throw new IllegalArgumentException("Start and end locations must not be the same.");
+		}
+	
+		// Setzen der Start- und Endpositionen
 		this.start = start;
 		this.end = end;
+	
+		// Standardmäßig ist die Tür leer
 		this.door = Optional.empty();
-		this.startRow = start.getRow();
-		this.startCloumn = start.getColumn();
-		this.endRow = end.getRow();
-		this.endCloumn = end.getColumn();
-
-
-		if(startRow.equals(endRow)) {
-			buildWall(startRow,endRow,endCloumn);
-		} 
-		if(endCloumn.equals(endCloumn)) {
-			buildWall(startCloumn,endCloumn,startRow);
-		} 
 	}
+	
 
 	/**
 	 * Add a door into a house wall.
@@ -96,8 +87,33 @@ public final class HouseWall {
 	 * @param newDoor door to be added into the housewall.
 	 */
 	public void addDoor(final Location newDoor) {
-		// TODO implement exercise 2 (c) here.
+		// Sicherstellen, dass die Tür nicht null ist
+		if (newDoor == null) {
+			throw new IllegalArgumentException("Door location must not be null.");
+		}
+	
+		// Sicherstellen, dass die Wand noch keine Tür hat
+		if (this.door.isPresent()) {
+			throw new IllegalStateException("This wall already has a door.");
+		}
+	
+		// Überprüfen, ob die Tür an einer gültigen Stelle auf der Wand ist
+		if (this.isVertical()) {
+			if (!isValidDoorOnVerticalWall(newDoor)) {
+				throw new IllegalArgumentException("Door must be between the start and end locations and not at the ends.");
+			}
+		} else if (this.isHorizontal()) {
+			if (!isValidDoorOnHorizontalWall(newDoor)) {
+				throw new IllegalArgumentException("Door must be between the start and end locations and not at the ends.");
+			}
+		} else {
+			throw new IllegalArgumentException("Wall must be either vertical or horizontal.");
+		}
+	
+		// Wenn alle Prüfungen bestanden wurden, Tür setzen
+		this.door = Optional.of(newDoor);
 	}
+	
 
 	/**
 	 * Get the first tile of the wall.
