@@ -87,33 +87,33 @@ public final class HouseWall {
 	 * @param newDoor door to be added into the housewall.
 	 */
 	public void addDoor(final Location newDoor) {
-		// Sicherstellen, dass die Tür nicht null ist
-		if (newDoor == null) {
-			throw new IllegalArgumentException("Door location must not be null.");
-		}
-	
-		// Sicherstellen, dass die Wand noch keine Tür hat
-		if (this.door.isPresent()) {
-			throw new IllegalStateException("This wall already has a door.");
-		}
-	
-		// Überprüfen, ob die Tür an einer gültigen Stelle auf der Wand ist
-		if (this.isVertical()) {
-			if (!isValidDoorOnVerticalWall(newDoor)) {
-				throw new IllegalArgumentException("Door must be between the start and end locations and not at the ends.");
-			}
-		} else if (this.isHorizontal()) {
-			if (!isValidDoorOnHorizontalWall(newDoor)) {
-				throw new IllegalArgumentException("Door must be between the start and end locations and not at the ends.");
-			}
-		} else {
-			throw new IllegalArgumentException("Wall must be either vertical or horizontal.");
-		}
-	
-		// Wenn alle Prüfungen bestanden wurden, Tür setzen
-		this.door = Optional.of(newDoor);
-	}
-	
+    // Sicherstellen, dass die Tür nicht null ist
+    if (newDoor == null) {
+        throw new IllegalArgumentException("Door location must not be null.");
+    }
+
+    // Sicherstellen, dass die Wand noch keine Tür hat
+    if (this.door.isPresent()) {
+        throw new IllegalStateException("This wall already has a door.");
+    }
+
+    // Überprüfen, ob die Tür an einer gültigen Stelle auf der Wand ist
+    if (this.isVertical()) {
+        if (!isValidDoorOnVerticalWall(newDoor)) {
+            throw new IllegalArgumentException("Door must be between the start and end locations and not at the ends.");
+        }
+    } else if (this.isHorizontal()) {
+        if (!isValidDoorOnHorizontalWall(newDoor)) {
+            throw new IllegalArgumentException("Door must be between the start and end locations and not at the ends.");
+        }
+    } else {
+        throw new IllegalArgumentException("Wall must be either vertical or horizontal.");
+    }
+
+    // Wenn alle Prüfungen bestanden wurden, Tür setzen
+    this.door = Optional.of(newDoor);
+}
+
 
 	/**
 	 * Get the first tile of the wall.
