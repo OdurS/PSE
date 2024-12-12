@@ -21,15 +21,17 @@ public final class HabitatHamsterGame extends SimpleHamsterGame {
     private Integer fixedPosition;
     private Location Position;
     private void buildWall1(Integer start, Integer end,Integer fix){
+		this.loadTerritoryFromResourceFile("/territories/habitatTerritory.ter");
         while (start < end) { 
-            territoryBuilder.wallAt(new Location(start,fix));
+			territoryBuilder.wallAt(new Location(start,fix));
             start++;
         }
 
     }
     private void buildWall2(Integer start, Integer end,Integer fix){
+		this.loadTerritoryFromResourceFile("/territories/habitatTerritory.ter");
         while (start < end) { 
-            TerritoryBuilder.wallAt(new Location(fix,start));
+            territoryBuilder.wallAt(new Location(fix,start));
             start++;
         }
     }
