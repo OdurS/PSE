@@ -5,55 +5,43 @@ import de.hamstersimulator.objectsfirst.datatypes.Location;
 import de.hamstersimulator.objectsfirst.external.model.TerritoryBuilder;
 import de.hamstersimulator.objectsfirst.external.simple.game.SimpleHamsterGame;
 import de.unistuttgart.iste.sqa.pse.sheet08.homework.habitat.house.House;
+import de.unistuttgart.iste.sqa.pse.sheet08.homework.habitat.house.HouseBuilder;
+import de.unistuttgart.iste.sqa.pse.sheet08.homework.habitat.house.HouseWall;
 
 /**
  * The habitat hamster game.
  */
 public final class HabitatHamsterGame extends SimpleHamsterGame {
 
-    private House house;
-    private Integer startRow; 
-    private Integer startCloumn;
-    private Integer endRow; 
-    private Integer endCloumn;
-    private Integer startPosition;
-    private Integer endPosition; 
-    private Integer fixedPosition;
-    private Location Position;
-    private void buildWall1(Integer start, Integer end,Integer fix){
-		this.loadTerritoryFromResourceFile("/territories/habitatTerritory.ter");
-        while (start < end) { 
-			territoryBuilder.wallAt(new Location(start,fix));
-            start++;
-        }
+	private House house;
 
-    }
-    private void buildWall2(Integer start, Integer end,Integer fix){
+	public HabitatHamsterGame() {
 		this.loadTerritoryFromResourceFile("/territories/habitatTerritory.ter");
-        while (start < end) { 
-            territoryBuilder.wallAt(new Location(fix,start));
-            start++;
-        }
-    }
-    private void compleatWallWall(Integer startRow, Integer endRow, Integer startCloum, Integer endCloum){
-            if(startRow.equals(endRow)) {
-                buildWall1(startRow,endRow,endCloumn);
-            } 
-            if(endCloumn.equals(endCloumn)) {
-                buildWall2(startCloumn,endCloumn,startRow);
-            } 
-    }
-    public HabitatHamsterGame() {
-        this.loadTerritoryFromResourceFile("/territories/habitatTerritory.ter");
 
-        TerritoryBuilder territoryBuilder = game.getNewTerritoryBuilder();
-            this.loadTerritoryFromResourceFile("/territories/habitatTerritory.ter");
-            compleatWallWall(1,10,1,1);
-			compleatWallWall(1,1,2,6);
-			compleatWallWall(2,4,6,6);
-			compleatWallWall(4,10,7,7);
-			compleatWallWall(10,10,2,7);
+		TerritoryBuilder territoryBuilder = game.getNewTerritoryBuilder();
+
+		// TODO Implement exercise 2 (d) between here...
+		HouseBuilder houseBuilder = new HouseBuilder(territoryBuilder, game.getTerritory());
+		HouseWall houseWallTOP = new HouseWall(new Location(1,1),new Location(1,11));
+		HouseWall houseWallRight = new HouseWall(new Location(2,11),new Location(3,11));
+		HouseWall houseWallRight2 = new HouseWall(new Location(5,11),new Location(7,11));
+//		houseBuilder.withWall(houseWallTOP);
+//		houseBuilder.withWall(houseWallRight);
+//		houseBuilder.withWall(houseWallRight2);
+		HouseWall walls []= {houseWallTOP,houseWallRight,houseWallRight2};
+		for (HouseWall wall :walls) {
+			houseBuilder.withWall(wall);
+		}
+		houseBuilder.build();
+
+		// ...and here. Do NOT put any code after here.
+
+		game.initialize(territoryBuilder);
+		game.startGame();
+
+		this.displayInNewGameWindow();
 	}
+
 	/**
 	 * Paule moves counterclockwise around his house.
 	 * <p>

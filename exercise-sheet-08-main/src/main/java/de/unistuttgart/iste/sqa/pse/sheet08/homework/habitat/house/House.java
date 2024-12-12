@@ -1,14 +1,17 @@
 package de.unistuttgart.iste.sqa.pse.sheet08.homework.habitat.house;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
+
+import de.hamstersimulator.objectsfirst.datatypes.Location;
 
 /**
  * A house in the habitat game.
  *
  * A house consists of a least one wall and up to one door per wall.
  *
- * @author Schweikert
+ * @author (your name)
  *
  */
 public final class House {
@@ -28,26 +31,15 @@ public final class House {
 	 *
 	 * @return doors of the house.
 	 */
-
-
-
-    private Set<Door> doors; // Set to store all the doors in the house
-
-    public House() {
-        this.doors = new HashSet<>(); // Initialize the set of doors
-    }
-
-    // Method to add a door to the house
-    public void addDoor(Door door) {
-        doors.add(door);
-    }
-
-    // Implementing the getDoors() method
-    public Set<Door> getDoors() {
-        return new HashSet<>(doors); // Return a copy of the set to avoid external modifications
-    }
-
-
+	public Set<Door> getDoors() {
+		// TODO implement 2 (g) here
+		Set<Door> doors  = new HashSet<>();
+		for (HouseWall wall: walls) {
+			Optional<Location> doorLocation = wall.getDoor();
+			doorLocation.ifPresent(location -> doors.add(new Door(location)));
+		}
+		return doors; // TODO remove this line if necessary.
+	}
 
 	/**
 	 * Creates a new house with the specified walls.
@@ -61,3 +53,4 @@ public final class House {
 		this.walls = walls;
 	}
 }
+
