@@ -1,10 +1,11 @@
 package de.unistuttgart.iste.sqa.pse.sheet08.homework.habitat.house;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import de.hamstersimulator.objectsfirst.datatypes.Location;
 import de.hamstersimulator.objectsfirst.external.model.Territory;
 import de.hamstersimulator.objectsfirst.external.model.TerritoryBuilder;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * This class is like the building company that builds the house.
@@ -12,7 +13,7 @@ import java.util.Set;
  * <p>
  * Invariants for this class are, that none of the attributes are null and that the set of walls does not contain any null elements.
  *
- * @author (your name)
+ * @author Schweikert
  */
 public final class HouseBuilder {
 

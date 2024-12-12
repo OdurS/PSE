@@ -1,7 +1,9 @@
 package de.unistuttgart.iste.sqa.pse.sheet08.homework.habitat.house;
 
-import de.hamstersimulator.objectsfirst.datatypes.Location;
 import java.util.Optional;
+
+import de.hamstersimulator.objectsfirst.datatypes.Location;
+import de.hamstersimulator.objectsfirst.external.model.TerritoryBuilder;
 
 /**
  * A wall in a {@link House}.
@@ -25,13 +27,31 @@ import java.util.Optional;
  * housewall has a door, that door must be located in between start and end. In
  * addition, the door must not be at the very start or end of the housewall.
  *
- * @author (your name)
+ * @author Schweikert
  */
 public final class HouseWall {
 	private final Location start;
 	private final Location end;
+	private Integer startRow; 
+	private Integer startCloumn;
+	private Integer endRow; 
+	private Integer endCloumn;
+	private Integer startPosition;
+	private Integer endPosition; 
+	private Integer fixedPosition;
+	private Location Position;
 
 	private Optional<Location> door;
+	private void buildWall(Integer startPosition, Integer endPosition, Integer fixedPosition){
+		for (startPosition; startPosition < endPosition; fixedPosition++) {
+			Location Position = new Location(startPosition, fixedPosition);
+			if (Position.blocksEntrance()) {
+				TerritoryBuilder.wallAt(Location Position);
+			}
+			
+		}
+
+	} 
 
 	/**
 	 * Constructs a new wall, which may or may not have a door.
@@ -49,6 +69,18 @@ public final class HouseWall {
 		this.start = start;
 		this.end = end;
 		this.door = Optional.empty();
+		this.startRow = start.getRow();
+		this.startCloumn = start.getColumn();
+		this.endRow = end.getRow();
+		this.endCloumn = end.getColumn();
+
+
+		if(startRow.equals(endRow)) {
+			buildWall(startRow,endRow,endCloumn);
+		} 
+		if(endCloumn.equals(endCloumn)) {
+			buildWall(startCloumn,endCloumn,startRow);
+		} 
 	}
 
 	/**
