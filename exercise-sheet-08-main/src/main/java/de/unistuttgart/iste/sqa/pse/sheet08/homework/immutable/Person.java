@@ -7,7 +7,7 @@ import java.util.Date;
  *
  * Name and birthdate must not be {@code null} and the name must not be blank.
  *
- * @author your name
+ * @author Schweikert
  */
 public class Person {
 

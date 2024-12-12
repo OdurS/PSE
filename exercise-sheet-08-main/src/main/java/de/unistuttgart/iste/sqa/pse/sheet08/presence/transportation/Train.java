@@ -42,7 +42,7 @@ public abstract class Train extends PublicTransportation {
 	 */
 	public EfficiencyCategory getEfficiencyCategory(final boolean useEnergyType) {
 		if (useEnergyType) {
-			return Efficiency.calculateEfficiency(energyType);
+			return Efficiency.calculateEfficiency(energyType);	
 		} else {
 			return super.getEfficiencyCategory();
 		}
