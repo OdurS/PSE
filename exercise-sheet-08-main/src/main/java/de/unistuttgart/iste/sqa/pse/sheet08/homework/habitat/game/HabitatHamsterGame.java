@@ -22,13 +22,17 @@ public final class HabitatHamsterGame extends SimpleHamsterGame {
 
 		// TODO Implement exercise 2 (d) between here...
 		HouseBuilder houseBuilder = new HouseBuilder(territoryBuilder, game.getTerritory());
-		HouseWall houseWallTOP = new HouseWall(new Location(1,1),new Location(1,11));
-		HouseWall houseWallRight = new HouseWall(new Location(2,11),new Location(3,11));
-		HouseWall houseWallRight2 = new HouseWall(new Location(5,11),new Location(7,11));
+		HouseWall houseWallTOP = new HouseWall(new Location(1,1),new Location(1,10));
+		HouseWall houseWallRight = new HouseWall(new Location(2,10),new Location(3,10));
+		HouseWall houseWallRight2 = new HouseWall(new Location(5,10),new Location(7,10));
+		HouseWall houseWallBottom = new HouseWall(new Location(7,6),new Location(7,9));
+		HouseWall houseWallBottomUp = new HouseWall(new Location(6,4),new Location(7,4));
+		HouseWall houseWallMiddel = new HouseWall(new Location(6,1),new Location(6,3));
+		HouseWall houseWallLeft = new HouseWall(new Location(2,1),new Location(5,1));
 //		houseBuilder.withWall(houseWallTOP);
 //		houseBuilder.withWall(houseWallRight);
 //		houseBuilder.withWall(houseWallRight2);
-		HouseWall walls []= {houseWallTOP,houseWallRight,houseWallRight2};
+		HouseWall walls []= {houseWallTOP,houseWallRight,houseWallRight2,houseWallBottom,houseWallBottomUp,houseWallMiddel,houseWallLeft};
 		for (HouseWall wall :walls) {
 			houseBuilder.withWall(wall);
 		}
