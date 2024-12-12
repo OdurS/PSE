@@ -5,44 +5,53 @@ import de.hamstersimulator.objectsfirst.datatypes.Location;
 import de.hamstersimulator.objectsfirst.external.model.TerritoryBuilder;
 import de.hamstersimulator.objectsfirst.external.simple.game.SimpleHamsterGame;
 import de.unistuttgart.iste.sqa.pse.sheet08.homework.habitat.house.House;
-import de.unistuttgart.iste.sqa.pse.sheet08.homework.habitat.house.HouseWall;
 
 /**
  * The habitat hamster game.
- * @author Schweikert
  */
 public final class HabitatHamsterGame extends SimpleHamsterGame {
 
-	private House house;
+    private House house;
+    private Integer startRow; 
+    private Integer startCloumn;
+    private Integer endRow; 
+    private Integer endCloumn;
+    private Integer startPosition;
+    private Integer endPosition; 
+    private Integer fixedPosition;
+    private Location Position;
+    private void buildWall1(Integer start, Integer end,Integer fix){
+        while (start < end) { 
+            territoryBuilder.wallAt(new Location(start,fix));
+            start++;
+        }
 
-	public HabitatHamsterGame() {
-		this.loadTerritoryFromResourceFile("/territories/habitatTerritory.ter");
+    }
+    private void buildWall2(Integer start, Integer end,Integer fix){
+        while (start < end) { 
+            TerritoryBuilder.wallAt(new Location(fix,start));
+            start++;
+        }
+    }
+    private void compleatWallWall(Integer startRow, Integer endRow, Integer startCloum, Integer endCloum){
+            if(startRow.equals(endRow)) {
+                buildWall1(startRow,endRow,endCloumn);
+            } 
+            if(endCloumn.equals(endCloumn)) {
+                buildWall2(startCloumn,endCloumn,startRow);
+            } 
+    }
+    public HabitatHamsterGame() {
+        this.loadTerritoryFromResourceFile("/territories/habitatTerritory.ter");
 
-		TerritoryBuilder territoryBuilder = game.getNewTerritoryBuilder();
-			this.loadTerritoryFromResourceFile("/territories/habitatTerritory.ter");
-	
-			HouseWall northernWall = new HouseWall(new Location(0, 0), new Location(0, 10)); // Example of a horizontal wall
-			HouseWall easternWall = new HouseWall(new Location(0, 10), new Location(7, 10)); // Example of a vertical wall
-			HouseWall southernWall = new HouseWall(new Location(7, 10), new Location(7, 0)); // Example of a horizontal wall
-			HouseWall westernWall = new HouseWall(new Location(7, 0), new Location(0, 0)); // Example of a vertical wall
-		
-			
-			build(northernWall);
-			house.addWall(easternWall);
-			house.addWall(southernWall);
-			house.addWall(westernWall);
-		
-			// Optionally add doors if needed (example if we want to add doors to certain walls)
-			northernWall.addDoor(new Location(0, 5)); // Example of adding a door to the northern wall
-			southernWall.addDoor(new Location(7, 5)); // Example of adding a door to the southern wall
-		// ...and here. Do NOT put any code after here.
-
-		game.initialize(territoryBuilder);
-		game.startGame();
-
-		this.displayInNewGameWindow();
+        TerritoryBuilder territoryBuilder = game.getNewTerritoryBuilder();
+            this.loadTerritoryFromResourceFile("/territories/habitatTerritory.ter");
+            compleatWallWall(1,10,1,1);
+			compleatWallWall(1,1,2,6);
+			compleatWallWall(2,4,6,6);
+			compleatWallWall(4,10,7,7);
+			compleatWallWall(10,10,2,7);
 	}
-
 	/**
 	 * Paule moves counterclockwise around his house.
 	 * <p>
