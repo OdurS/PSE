@@ -11,7 +11,7 @@ import de.hamstersimulator.objectsfirst.datatypes.Location;
  *
  * A house consists of a least one wall and up to one door per wall.
  *
- * @author (your name)
+ * @author Schweikert
  *
  */
 public final class House {

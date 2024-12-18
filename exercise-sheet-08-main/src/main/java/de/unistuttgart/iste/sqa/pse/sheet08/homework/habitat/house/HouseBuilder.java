@@ -13,7 +13,7 @@ import de.hamstersimulator.objectsfirst.external.model.TerritoryBuilder;
  * <p>
  * Invariants for this class are, that none of the attributes are null and that the set of walls does not contain any null elements.
  *
- * @author (your name)
+ * @author Schweikert
  */
 public final class HouseBuilder {
 

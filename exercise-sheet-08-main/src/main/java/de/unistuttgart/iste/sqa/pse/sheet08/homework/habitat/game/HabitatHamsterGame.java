@@ -10,6 +10,7 @@ import de.unistuttgart.iste.sqa.pse.sheet08.homework.habitat.house.HouseWall;
 
 /**
  * The habitat hamster game.
+ * @autor Schweikert
  */
 public final class HabitatHamsterGame extends SimpleHamsterGame {
 
