@@ -10,4 +10,10 @@ public class ListTester {
 	}
 
 	// Add operations for exercise 2 (b), (d) and (e) here.
+	public void listWithThousendStrings (){
+
+	}
+	public void listWithTenthousendStrings (){
+
+	}
 }
