@@ -1,35 +1,54 @@
 package de.unistuttgart.iste.sqa.pse.sheet10.homework.warehouse;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 import de.unistuttgart.iste.sqa.pse.sheet10.homework.warehouse.items.StationeryItem;
 
 /**
  * Represents a buffer for temporary storage of items.
  *
- * @author your name
+ * This buffer uses a queue to manage items in a first-in, first-out (FIFO) order.
+ * Items are added to the back of the queue and removed from the front.
+ *
+ * @author Schweikert
  */
 public final class Buffer {
 
-	// TODO add data structure for exercise part(f) here.
+    // Using a Queue to manage items in FIFO order
+    private final Queue<StationeryItem> itemQueue;
 
-	// TODO add documentation here
-	public Buffer() {
-		// TODO initialize data structure for exercise part (f) here.
-	}
+    /**
+     * Initializes the buffer with an empty queue.
+     */
+    public Buffer() {
+        itemQueue = new LinkedList<>();
+    }
 
-	// TODO add documentation here
-	public void bufferItem(final StationeryItem stationeryItem) {
-		// TODO implement exercise part (g) here.
-	}
+    /**
+     * Adds an item to the buffer.
+     *
+     * @param stationeryItem the item to add to the buffer
+     */
+    public void bufferItem(final StationeryItem stationeryItem) {
+        itemQueue.offer(stationeryItem);
+    }
 
-	// TODO add documentation here
-	public StationeryItem releaseItem() {
-		// TODO implement exercise part (g) here.
-		return null; // TODO delete this line if necessary.
-	}
+    /**
+     * Releases the next item from the buffer.
+     *
+     * @return the next item, or null if the buffer is empty
+     */
+    public StationeryItem releaseItem() {
+        return itemQueue.poll();
+    }
 
-	// TODO add documentation here
-	public /*@ pure @*/ boolean isEmpty() {
-		// TODO implement exercise part (g) here.
-		return false; // TODO delete this line if necessary.
-	}
+    /**
+     * Checks if the buffer is empty.
+     *
+     * @return true if the buffer is empty, false otherwise
+     */
+    public /*@ pure @*/ boolean isEmpty() {
+        return itemQueue.isEmpty();
+    }
 }
