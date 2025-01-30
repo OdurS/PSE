@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 
 import de.unistuttgart.iste.sqa.pse.sheet12.homework.hamsterclub.HamsterClub;
 
+//@autor Schweikert
+
 public final class TestHamster {
 
 	/**
@@ -47,7 +49,31 @@ public final class TestHamster {
 
 		game.stopGame();
 	}
-	public void TestHamsterMoveAndPick() {
+	/**
+	 * Test Hamster.pickGrain via API.
+	 */
+	public void TestHamsterPick() {
+		final HamsterGame game = new HamsterGame();
+		final TerritoryBuilder territoryBuilder = game.getNewTerritoryBuilder();
+		territoryBuilder.initializeTerritory(new Size(TERRITORY_SIZE, TERRITORY_SIZE));
+
+		territoryBuilder.defaultHamsterAt(Location.ORIGIN, Direction.EAST, 0);
+		territoryBuilder.grainAt(Location.from(0, 0));
+
+		game.initialize(territoryBuilder);
+		game.startGame();
+
+
+		final Hamster paule = game.getTerritory().getDefaultHamster();
+		paule.pickGrain();
+//konnte Grain aufheben
+		assertEquals(false,paule. mouthEmpty());
+
+	}
+	/**
+	 * Test Hamster.pickGrain via API.
+	 */
+	public void TestHamsterMove() {
 		final HamsterGame game = new HamsterGame();
 		final TerritoryBuilder territoryBuilder = game.getNewTerritoryBuilder();
 		territoryBuilder.initializeTerritory(new Size(TERRITORY_SIZE, TERRITORY_SIZE));
@@ -57,15 +83,11 @@ public final class TestHamster {
 
 		game.initialize(territoryBuilder);
 		game.startGame();
-		
-		//Laufen und aufheben
-		Hamster.move();
-		Hamster.pickGrain();
+
 
 		final Hamster paule = game.getTerritory().getDefaultHamster();
-		//ist gelaufen
-		assertEquals((1,0),HamsterClub.getLocation());
-		//konnte Grain aufheben
-		assertEquals(1, );
-
-}
+		paule.move();
+		Location expected = new Location(1,0);
+		assertEquals(expected,paule.getLocation());
+	}
+	}
